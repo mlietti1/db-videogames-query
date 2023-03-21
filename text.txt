@@ -1,0 +1,104 @@
+-- SELECT
+
+-- 1. 
+
+SELECT * FROM software_houses sh 
+WHERE country = 'United States';
+
+
+-- 2. 
+
+SELECT * FROM players p
+WHERE city = 'Rogahnland';
+
+-- 3.
+
+SELECT * FROM players p 
+WHERE name LIKE '%a';
+
+-- 4.
+
+SELECT * FROM reviews r 
+WHERE player_id = 800;
+
+-- 5.
+
+SELECT t.year, COUNT(*) num
+from tournaments t WHERE `year` = 2015;
+
+-- 6.
+
+SELECT * FROM awards a 
+WHERE description LIKE '% facere %';
+
+-- 7.
+
+SELECT DISTINCT `videogame_id`
+FROM category_videogame cv 
+WHERE category_id = 2 OR category_id = 6;
+
+-- 8.
+
+SELECT * FROM reviews r 
+WHERE rating >= 2 AND rating <= 4;
+
+-- 9.
+
+SELECT * FROM videogames v WHERE YEAR(release_date) = 2020;
+
+-- 10.
+
+SELECT DISTINCT `videogame_id` from reviews r WHERE rating >= 5;
+
+-- 11.
+
+SELECT videogame_id , COUNT(*) num, AVG(rating)  from reviews r WHERE videogame_id = 412;
+
+-- 12.
+
+SELECT software_house_id, YEAR(release_date) year, COUNT(*) num  
+FROM videogames v  
+WHERE software_house_id = 1 AND YEAR(release_date) = 2018
+GROUP BY year;
+
+-- GROUP BY
+
+-- 1.
+
+SELECT country, COUNT(*) num
+from software_houses sh 
+GROUP BY country;
+
+-- 2.
+
+SELECT videogame_id, COUNT(*) num
+FROM reviews r 
+GROUP BY videogame_id;
+
+-- 3.
+
+SELECT pegi_label_id, COUNT(*)
+FROM pegi_label_videogame plv 
+GROUP BY pegi_label_id;
+
+-- 4.
+
+SELECT YEAR(release_date) year, COUNT(*)
+FROM videogames v 
+GROUP BY YEAR(release_date);
+
+-- 5.
+
+SELECT device_id, COUNT(*)
+FROM device_videogame dv 
+GROUP BY device_id;
+
+-- 6.
+
+SELECT videogame_id, AVG(rating) avg_rating
+FROM reviews r 
+GROUP BY videogame_id 
+ORDER BY avg_rating DESC;
+
+-- JOIN
+
