@@ -197,3 +197,20 @@ JOIN awards a ON av.award_id = a.id
 WHERE a.name = 'gioco più atteso' AND av.`year` = 2018 AND t.`year` = 2019
 ORDER BY t.id, p.id;
 
+-- 10.
+
+SELECT sh.*, v.*
+FROM software_houses sh 
+JOIN videogames v ON v.software_house_id = sh.id 
+ORDER BY v.release_date 
+LIMIT 1;
+
+-- 11.
+
+SELECT v.id, v.name, v.release_date, COUNT(r.id) tot_reviews
+FROM videogames v 
+JOIN reviews r ON v.id = r.videogame_id 
+GROUP BY v.id 
+ORDER BY tot_reviews DESC 
+LIMIT 1;
+
